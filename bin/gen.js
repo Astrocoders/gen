@@ -3,6 +3,7 @@
 const path = require('path')
 const fs = require('fs')
 const chalk = require('chalk')
+const commonTags = require('common-tags')
 
 const { argv } = process
 
@@ -18,7 +19,7 @@ if (!argv[3]) {
     console.log(chalk.bold.white(`--${arg}=value`), `${creator.args[arg]}`)
   })
 } else {
-  const creator = require(`${process.cwd()}./templates/${argv[2]}.js`)
+  const creator = require(`${process.cwd()}/.templates/${argv[2]}.js`)
 
   const [, , , ...args] = argv
 
@@ -27,11 +28,11 @@ if (!argv[3]) {
     return { [combo[0].replace('--', '')]: combo[1], ...acc }
   }, {})
 
-  const destination = path.join(__dirname, '../', creator.where(finalArgs))
+  const destination = path.join(process.cwd(), creator.where(finalArgs))
 
-  const content = creator.gen(finalArgs)
+  const content = creator.gen(finalArgs, { commonTags, chalk })
 
   fs.writeFileSync(destination, content)
 
-  creator.postBuild()
+  creator.postBuild({ chalk })
 }
