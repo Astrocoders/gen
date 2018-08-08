@@ -1,0 +1,29 @@
+{
+  "name": "@astrocoders/gen",
+  "version": "1.0.0",
+  "description": "As simple as a generator can be",
+  "main": "index.js",
+  "bin": {
+    "gen": "./bin/gen.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Astrocoders/gen.git"
+  },
+  "keywords": [
+    "generator"
+  ],
+  "author": "Astrocoders <astrocoders.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Astrocoders/gen/issues"
+  },
+  "homepage": "https://github.com/Astrocoders/gen#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "common-tags": "^1.8.0"
+  }
+}
